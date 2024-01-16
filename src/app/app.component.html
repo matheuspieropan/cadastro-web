@@ -1,52 +1,69 @@
-<<<<<<< HEAD
-<div class="container">
+<div class="container mt-3">
 
-  <div class="row">
+  <form [formGroup]="formulario">
 
-    <div class="col-4">
-      <label>Nome</label>
-      <input type="text" autocomplete="current-password" formControlName="nome"
-        class="mt-2 mb-3 form-control form-control" />
+    <div class="row">
+
+      <div class="col-lg-4">
+        <label>Nome</label>
+        <input type="text" autocomplete="current-password" formControlName="nome"
+          class="mt-2 mb-3 form-control form-control" />
+      </div>
+
+      <div class="col-lg-4">
+        <label>Sobrenome</label>
+        <input type="text" autocomplete="current-password" formControlName="sobrenome"
+          class="mt-2 mb-3 form-control form-control" />
+      </div>
+
+      <div class="col-lg-4">
+        <label>CPF</label>
+        <input type="text" autocomplete="current-password" formControlName="cpf"
+          class="mt-2 mb-3 form-control form-control" />
+      </div>
+
     </div>
 
-    <div class="col-4">
-      <label>Sobrenome</label>
-      <input type="text" autocomplete="current-password" formControlName="sobrenome"
-        class="mt-2 mb-3 form-control form-control" />
-    </div>
-
-    <div class="col-4">
-      <label>CPF</label>
-      <input type="text" autocomplete="current-password" formControlName="sobrenome"
-        class="mt-2 mb-3 form-control form-control" />
-    </div>
-
-  </div>
-
-  <div class="row">
-    <div class="col-4">
-
-      <label>Faixa salarial</label>
-      <select class="form-select">
-        <option selected>Selecione..</option>
-        <option value="1">R$1.400,00 até R$2.400,00</option>
-        <option value="2">R$2.401,00 até R$4.100,00</option>
-        <option value="3">R$4.101,00 até R$7.859,00</option>
-        <option value="3">R$7.860,00 ou mais</option>
-      </select>
+    <div class="row">
       
+      <div class="col-lg-4">
+
+        <label>Faixa salarial</label>
+        <select class="form-select mt-2 mb-3">
+          <option selected>Selecione..</option>
+          <option value="1">R$ 1.400,00 até R$ 2.400,00</option>
+          <option value="2">R$ 2.401,00 até R$ 4.100,00</option>
+          <option value="3">R$ 4.101,00 até R$ 7.859,00</option>
+          <option value="3">R$ 7.860,00 ou mais</option>
+        </select>
+
+      </div>
+
+      <div class="col-lg-4">
+        <label>Valor desejado</label><br>
+        <select class="form-select mt-2 mb-3">
+          <option selected>Selecione..</option>
+          <option value="1">R$ 20.000,00 até R$ 40.999,00</option>
+          <option value="2">R$ 41.000,00 até R$ 75.999,00</option>
+          <option value="3">R$ 76.000,00 até R$ 99.999,00</option>
+          <option value="3">R$ 100.000,00 ou mais</option>
+        </select>
+      </div>
+
+      <div class="col-lg-4">
+        <label>Prazo (em meses)</label><br>
+        <mat-slider class="example-margin mt-2 mb-3" min="24" max="300" step="12">
+          <input matSliderThumb formControlName="meses" #slider>
+        </mat-slider>
+        {{slider.value}}
+      </div>
+
     </div>
 
-    <div class="col-4">
-      <label>Valor desejado</label>
-    </div>
-
-  </div>
+  </form>
 
   <div class="row mt-3">
     <button type="button" class="btn btn-primary">Enviar para análise</button>
   </div>
 
 </div>
-=======
->>>>>>> d84131e4dfc10ffedabc62a2fd4528ac0327e8d5
