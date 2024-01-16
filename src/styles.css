@@ -9,3 +9,7 @@ body {
 .meu-azul {
     background-color: #3f51b5;
 }
+
+.meu-azul:hover {
+    background-color: #3f51b5;
+}

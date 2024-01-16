@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
 
   formulario: FormGroup = this.formBuilder.group({
     nome: ['', [Validators.required, Validators.minLength(3)]],
+    email: ['', [Validators.required, Validators.minLength(3)]],
     sobrenome: ['', [Validators.required, Validators.minLength(3)]],
     cpf: ['', [Validators.required, Validators.minLength(11)]],
     prazoPagamento: [24],
@@ -58,6 +59,7 @@ export class AppComponent implements OnInit {
   limparFormulario(): void {
     this.formulario.patchValue({
       nome: '',
+      email: '',
       sobrenome: '',
       cpf: '',
       prazoPagamento: 24,

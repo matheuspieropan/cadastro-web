@@ -12,7 +12,7 @@
           <label>Nome</label>
           <input type="text" autocomplete="current-password" formControlName="nome"
             class="mt-2 mb-2 form-control form-control" />
-          <div class="field-message m-0 mb-2 mensagem-erro"
+          <div class="field-message m-0 mb-3 mensagem-erro"
             *ngIf="solicitouProposta && formulario.get('nome')?.invalid">
             *Campo de preenchimento obrigatório
           </div>
@@ -22,7 +22,7 @@
           <label>Sobrenome</label>
           <input type="text" autocomplete="current-password" formControlName="sobrenome"
             class="mt-2 mb-2 form-control form-control" />
-          <div class="field-message m-0 mb-2 mensagem-erro"
+          <div class="field-message m-0 mb-3 mensagem-erro"
             *ngIf="solicitouProposta && formulario.get('sobrenome')?.invalid">
             *Campo de preenchimento obrigatório
           </div>
@@ -32,7 +32,7 @@
           <label>CPF</label>
           <input type="text" autocomplete="current-password" formControlName="cpf"
             class="mt-2 mb-2 form-control form-control" />
-          <div class="field-message m-0 mb-2 mensagem-erro" *ngIf="solicitouProposta && formulario.get('cpf')?.invalid">
+          <div class="field-message m-0 mb-3 mensagem-erro" *ngIf="solicitouProposta && formulario.get('cpf')?.invalid">
             *Campo de preenchimento obrigatório
           </div>
         </div>
@@ -44,7 +44,7 @@
         <div class="col-lg-4">
 
           <label>Faixa salarial</label>
-          <select class="form-select mt-2 mb-2" formControlName="salario">
+          <select class="form-select mt-2 mb-3" formControlName="salario">
             <option value="0">Selecione..</option>
             <option value="1">R$ 1.400,00 até R$ 2.400,00</option>
             <option value="2">R$ 2.401,00 até R$ 4.100,00</option>
@@ -52,7 +52,7 @@
             <option value="3">R$ 7.860,00 ou mais</option>
           </select>
 
-          <div class="field-message m-0 mb-2 mensagem-erro"
+          <div class="field-message m-0 mb-3 mensagem-erro"
             *ngIf="solicitouProposta && formulario.get('salario')?.value == 0">
             *Campo de preenchimento obrigatório
           </div>
@@ -60,8 +60,8 @@
         </div>
 
         <div class="col-lg-4">
-          <label>Valor desejado</label><br>
-          <select class="form-select mt-2 mb-2" formControlName="valorSolicitado">
+          <label>Valor</label><br>
+          <select class="form-select mt-2 mb-3" formControlName="valorSolicitado">
             <option value="0">Selecione..</option>
             <option value="R$ 20.000,00 até R$ 40.999,00">R$ 20.000,00 até R$ 40.999,00</option>
             <option value="R$ 41.000,00 até R$ 75.999,00">R$ 41.000,00 até R$ 75.999,00</option>
@@ -77,18 +77,30 @@
         </div>
 
         <div class="col-lg-4">
-          <label>Prazo (em meses)</label><br>
-          <mat-slider class="example-margin mt-2 mb-3" min="24" max="300" step="12">
-            <input matSliderThumb #slider formControlName="prazoPagamento">
-          </mat-slider>
-          {{slider.value}}
+          <label>E-mail</label>
+          <input type="text" autocomplete="current-password" formControlName="email"
+            class="mt-2 mb-2 form-control form-control" />
+          <div class="field-message m-0 mb-3 mensagem-erro"
+            *ngIf="solicitouProposta && formulario.get('email')?.invalid">
+            *Campo de preenchimento obrigatório
+          </div>
         </div>
 
       </div>
 
       <div class="row m-1 mb-2">
 
-        <div class="col-12 text-end">
+        <div class="col-lg-4">
+          <label>Prazo (em meses)</label><br>
+          <mat-slider class="example-margin mt-2" min="24" max="300" step="12" style="width: 80%;">
+            <input matSliderThumb #slider formControlName="prazoPagamento">
+          </mat-slider>
+          {{slider.value}}
+        </div>
+      </div>
+
+      <div class="row m-1 mb-2">
+        <div class="col-lg-12 text-end">
           <button type="button" class="btn btn-secondary meu-azul" (click)="cadastrarProposta()">Enviar para
             análise</button>
         </div>
@@ -98,10 +110,8 @@
   </form>
 
   <div class="row mt-4" *ngIf="propostas.length != 0">
-
-    <div class="col-12">
-
-      <table class="table align-middle borda">
+    <div class="table-responsive">
+      <table class="table table-striped align-middle borda">
         <thead class="bg-light">
           <tr>
             <th>Nome</th>
@@ -118,7 +128,7 @@
                 <img src="../assets/user-128.png" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
                 <div class="ms-3">
                   <p class="fw-normal mb-1">{{proposta.nome}} {{proposta.sobrenome}}</p>
-                  <p class="text-normal mb-0">email@hotmail.com</p>
+                  <p class="text-normal mb-0">{{proposta.email}}</p>
                 </div>
               </div>
             </td>
@@ -129,15 +139,12 @@
               {{proposta.valorSolicitado}}
             </td>
             <td>
-              {{proposta.prazoPagamento}}
+              {{proposta.prazoPagamento}} meses
             </td>
             <td>Em análise</td>
           </tr>
         </tbody>
       </table>
-
     </div>
-
   </div>
-
 </div>
