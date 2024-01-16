@@ -30,7 +30,7 @@
 
         <div class="col-lg-4">
           <label>CPF</label>
-          <input type="text" autocomplete="current-password" formControlName="cpf"
+          <input type="text" formControlName="cpf" placeholder="000.000.000-00" mask="000.000.000-00"
             class="mt-2 mb-2 form-control form-control" />
           <div class="field-message m-0 mb-3 mensagem-erro" *ngIf="solicitouProposta && formulario.get('cpf')?.invalid">
             *Campo de preenchimento obrigatório

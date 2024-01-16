@@ -7,7 +7,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './nav/nav.component';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -21,9 +22,14 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    NgxMaskPipe,
+    NgxMaskDirective,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    provideNgxMask()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
