@@ -12,19 +12,30 @@
         <div class="col-lg-4">
           <label>Nome</label>
           <input type="text" autocomplete="current-password" formControlName="nome"
-            class="mt-2 mb-3 form-control form-control" />
+            class="mt-2 mb-2 form-control form-control" />
+          <div class="field-message m-0 mb-2 mensagem-erro"
+            *ngIf="solicitouProposta && formulario.get('nome')?.invalid">
+            *Campo de preenchimento obrigatório
+          </div>
         </div>
 
         <div class="col-lg-4">
           <label>Sobrenome</label>
           <input type="text" autocomplete="current-password" formControlName="sobrenome"
-            class="mt-2 mb-3 form-control form-control" />
+            class="mt-2 mb-2 form-control form-control" />
+          <div class="field-message m-0 mb-2 mensagem-erro"
+            *ngIf="solicitouProposta && formulario.get('sobrenome')?.invalid">
+            *Campo de preenchimento obrigatório
+          </div>
         </div>
 
         <div class="col-lg-4">
           <label>CPF</label>
           <input type="text" autocomplete="current-password" formControlName="cpf"
-            class="mt-2 mb-3 form-control form-control" />
+            class="mt-2 mb-2 form-control form-control" />
+          <div class="field-message m-0 mb-2 mensagem-erro" *ngIf="solicitouProposta && formulario.get('cpf')?.invalid">
+            *Campo de preenchimento obrigatório
+          </div>
         </div>
 
       </div>
@@ -34,25 +45,34 @@
         <div class="col-lg-4">
 
           <label>Faixa salarial</label>
-          <select class="form-select mt-2 mb-3" formControlName="salario">
-            <option selected>Selecione..</option>
+          <select class="form-select mt-2 mb-2" formControlName="salario">
+            <option value="0">Selecione..</option>
             <option value="1">R$ 1.400,00 até R$ 2.400,00</option>
             <option value="2">R$ 2.401,00 até R$ 4.100,00</option>
             <option value="3">R$ 4.101,00 até R$ 7.859,00</option>
             <option value="3">R$ 7.860,00 ou mais</option>
           </select>
 
+          <div class="field-message m-0 mb-2 mensagem-erro" *ngIf="solicitouProposta && formulario.get('salario')?.value == 0">
+            *Campo de preenchimento obrigatório
+          </div>
+
         </div>
 
         <div class="col-lg-4">
           <label>Valor desejado</label><br>
-          <select class="form-select mt-2 mb-3" formControlName="valorSolicitado">
-            <option selected>Selecione..</option>
+          <select class="form-select mt-2 mb-2" formControlName="valorSolicitado">
+            <option value="0">Selecione..</option>
             <option value="R$ 20.000,00 até R$ 40.999,00">R$ 20.000,00 até R$ 40.999,00</option>
             <option value="R$ 41.000,00 até R$ 75.999,00">R$ 41.000,00 até R$ 75.999,00</option>
             <option value="R$ 76.000,00 até R$ 99.999,00">R$ 76.000,00 até R$ 99.999,00</option>
             <option value="R$ 100.000,00 ou mais">R$ 100.000,00 ou mais</option>
           </select>
+
+          <div class="field-message m-0 mb-2 mensagem-erro" *ngIf="solicitouProposta && formulario.get('valorSolicitado')?.value == 0">
+            *Campo de preenchimento obrigatório
+          </div>
+
         </div>
 
         <div class="col-lg-4">
@@ -74,7 +94,7 @@
 
   </form>
 
-  <div class="row mt-4">
+  <div class="row mt-4" *ngIf="propostas.length != 0">
 
     <table class="table align-middle">
       <thead class="bg-light">

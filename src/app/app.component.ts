@@ -10,6 +10,7 @@ import { CadastroService } from './service/cadastro.service';
 })
 export class AppComponent implements OnInit {
 
+  solicitouProposta: boolean = false
   value = 24;
   propostas: Proposta[] = []
 
@@ -23,12 +24,12 @@ export class AppComponent implements OnInit {
   }
 
   formulario: FormGroup = this.formBuilder.group({
-    nome: ['', [Validators.required, Validators.minLength(1)]],
-    sobrenome: ['', [Validators.required, Validators.minLength(1)]],
-    cpf: ['', [Validators.required, Validators.minLength(1)]],
+    nome: ['', [Validators.required, Validators.minLength(3)]],
+    sobrenome: ['', [Validators.required, Validators.minLength(3)]],
+    cpf: ['', [Validators.required, Validators.minLength(11)]],
     prazoPagamento: [24],
-    salario: [null, [Validators.required, Validators.minLength(1)]],
-    valorSolicitado: [null, [Validators.required, Validators.minLength(1)]],
+    salario: [0, [Validators.required, Validators.minLength(1)]],
+    valorSolicitado: [0, [Validators.required, Validators.minLength(1)]],
   })
 
   buscarPropostas(): void {
@@ -40,6 +41,11 @@ export class AppComponent implements OnInit {
   }
 
   castrarProposta(): void {
+    if (this.formulario.invalid) {
+      this.solicitouProposta = true;
+      return;
+    }
+
     this.cadastroService.castrarProposta(this.formulario.value).subscribe({
       next: () => {
         this.buscarPropostas()
@@ -58,6 +64,6 @@ export class AppComponent implements OnInit {
       salario: null,
       valorSolicitado: null,
     })
+    this.solicitouProposta = false
   }
-  
 }

@@ -6,3 +6,8 @@
 .cor {
     background-color: #565e64;
 }
+
+.mensagem-erro {
+    font-size: 13px;
+    color: red;
+}
