@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
     })
   }
 
-  castrarProposta(): void {
+  cadastrarProposta(): void {
     if (this.formulario.invalid) {
       this.solicitouProposta = true;
       return;

@@ -4,7 +4,6 @@
 
   <form [formGroup]="formulario">
 
-
     <div class="borda">
 
       <div class="row m-1">
@@ -53,7 +52,8 @@
             <option value="3">R$ 7.860,00 ou mais</option>
           </select>
 
-          <div class="field-message m-0 mb-2 mensagem-erro" *ngIf="solicitouProposta && formulario.get('salario')?.value == 0">
+          <div class="field-message m-0 mb-2 mensagem-erro"
+            *ngIf="solicitouProposta && formulario.get('salario')?.value == 0">
             *Campo de preenchimento obrigatório
           </div>
 
@@ -69,7 +69,8 @@
             <option value="R$ 100.000,00 ou mais">R$ 100.000,00 ou mais</option>
           </select>
 
-          <div class="field-message m-0 mb-2 mensagem-erro" *ngIf="solicitouProposta && formulario.get('valorSolicitado')?.value == 0">
+          <div class="field-message m-0 mb-2 mensagem-erro"
+            *ngIf="solicitouProposta && formulario.get('valorSolicitado')?.value == 0">
             *Campo de preenchimento obrigatório
           </div>
 
@@ -84,11 +85,13 @@
         </div>
 
       </div>
-    </div>
 
-    <div class="row mt-4">
-      <div class="col-12 text-end">
-        <button type="button" class="btn btn-secondary cor" (click)="castrarProposta()">Enviar para análise</button>
+      <div class="row m-1 mb-2">
+
+        <div class="col-12 text-end">
+          <button type="button" class="btn btn-secondary meu-azul" (click)="cadastrarProposta()">Enviar para
+            análise</button>
+        </div>
       </div>
     </div>
 
@@ -96,41 +99,44 @@
 
   <div class="row mt-4" *ngIf="propostas.length != 0">
 
-    <table class="table align-middle">
-      <thead class="bg-light">
-        <tr>
-          <th>Nome</th>
-          <th>CPF</th>
-          <th>Valor</th>
-          <th>Prazo</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let proposta of propostas">
-          <td>
-            <div class="d-flex align-items-center">
-              <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
-                class="rounded-circle" />
-              <div class="ms-3">
-                <p class="fw-normal mb-1">{{proposta.nome}} {{proposta.sobrenome}}</p>
-                <p class="text-normal mb-0">email@hotmail.com</p>
+    <div class="col-12">
+
+      <table class="table align-middle borda">
+        <thead class="bg-light">
+          <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Valor</th>
+            <th>Prazo</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let proposta of propostas">
+            <td>
+              <div class="d-flex align-items-center">
+                <img src="../assets/user-128.png" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                <div class="ms-3">
+                  <p class="fw-normal mb-1">{{proposta.nome}} {{proposta.sobrenome}}</p>
+                  <p class="text-normal mb-0">email@hotmail.com</p>
+                </div>
               </div>
-            </div>
-          </td>
-          <td>
-            <p class="fw-normal mb-1">{{proposta.cpf}}</p>
-          </td>
-          <td>
-            {{proposta.valorSolicitado}}
-          </td>
-          <td>
-            {{proposta.prazoPagamento}}
-          </td>
-          <td>Em análise</td>
-        </tr>
-      </tbody>
-    </table>
+            </td>
+            <td>
+              <p class="fw-normal mb-1">{{proposta.cpf}}</p>
+            </td>
+            <td>
+              {{proposta.valorSolicitado}}
+            </td>
+            <td>
+              {{proposta.prazoPagamento}}
+            </td>
+            <td>Em análise</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
 
   </div>
 
