@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
       sobrenome: '',
       cpf: '',
       prazoPagamento: 24,
-      salario: null,
+      salario: 0,
       valorSolicitado: null,
     })
     this.solicitouProposta = false

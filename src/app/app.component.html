@@ -43,14 +43,10 @@
 
         <div class="col-lg-4">
 
-          <label>Faixa salarial</label>
-          <select class="form-select mt-2 mb-3" formControlName="salario">
-            <option value="0">Selecione..</option>
-            <option value="1">R$ 1.400,00 até R$ 2.400,00</option>
-            <option value="2">R$ 2.401,00 até R$ 4.100,00</option>
-            <option value="3">R$ 4.101,00 até R$ 7.859,00</option>
-            <option value="3">R$ 7.860,00 ou mais</option>
-          </select>
+          <label>Salário</label>
+          
+          <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align:'left'}"
+           type="text" class="mt-2 mb-2 form-control form-control" formControlName="salario" />
 
           <div class="field-message m-0 mb-3 mensagem-erro"
             *ngIf="solicitouProposta && formulario.get('salario')?.value == 0">
@@ -111,7 +107,7 @@
 
   <div class="row mt-4" *ngIf="propostas.length != 0">
     <div class="table-responsive">
-      <table class="table table-striped align-middle borda">
+      <table class="table table align-middle borda">
         <thead class="bg-light">
           <tr>
             <th>Nome</th>
@@ -125,7 +121,7 @@
           <tr *ngFor="let proposta of propostas">
             <td>
               <div class="d-flex align-items-center">
-                <img src="../assets/user-128.png" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                <img src="../assets/user.png" style="width: 50px; height: 50px" class="rounded-circle" />
                 <div class="ms-3">
                   <p class="fw-normal mb-1">{{proposta.nome}} {{proposta.sobrenome}}</p>
                   <p class="text-normal mb-0">{{proposta.email}}</p>
@@ -133,7 +129,7 @@
               </div>
             </td>
             <td>
-              <p class="fw-normal mb-1">{{proposta.cpf}}</p>
+              <p class="fw-normal mb-1">{{ proposta.cpf| mask: '000.000.000-00' }}</p>
             </td>
             <td>
               {{proposta.valorSolicitado}}

@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { WebSocketService } from './service/web-socket';
 
 @NgModule({
   declarations: [
@@ -25,10 +27,12 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     HttpClientModule,
     NgxMaskPipe,
     NgxMaskDirective,
-    HttpClientModule
+    HttpClientModule,
+    CurrencyMaskModule
   ],
   providers: [
-    provideNgxMask()
+    provideNgxMask(),
+    WebSocketService
   ],
   bootstrap: [AppComponent]
 })
