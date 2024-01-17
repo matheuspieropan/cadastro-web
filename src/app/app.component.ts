@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Proposta } from './model/proposta';
 import { CadastroService } from './service/cadastro.service';
-
+import { WebSocketConnector } from './service/web-socket-connector';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,13 +10,15 @@ import { CadastroService } from './service/cadastro.service';
 })
 export class AppComponent implements OnInit {
 
-  solicitouProposta: boolean = false
+  exibirMsgCampoObrigatorio: boolean = false
   value = 24;
   propostas: Proposta[] = []
 
   constructor(
     private formBuilder: FormBuilder,
-    private cadastroService: CadastroService) {
+    private cadastroService: CadastroService,
+  ) {
+    new WebSocketConnector('http://localhost:8080/ws', '/propostas', this.onMessage.bind(this));
   }
 
   ngOnInit(): void {
@@ -43,7 +45,7 @@ export class AppComponent implements OnInit {
 
   cadastrarProposta(): void {
     if (this.formulario.invalid) {
-      this.solicitouProposta = true;
+      this.exibirMsgCampoObrigatorio = true;
       return;
     }
 
@@ -66,6 +68,10 @@ export class AppComponent implements OnInit {
       salario: 0,
       valorSolicitado: null,
     })
-    this.solicitouProposta = false
+    this.exibirMsgCampoObrigatorio = false
+  }
+
+  onMessage(propostas: any): void {
+    this.propostas = JSON.parse(propostas.body) as Proposta[]
   }
 }

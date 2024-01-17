@@ -13,7 +13,7 @@
           <input type="text" autocomplete="current-password" formControlName="nome"
             class="mt-2 mb-2 form-control form-control" />
           <div class="field-message m-0 mb-3 mensagem-erro"
-            *ngIf="solicitouProposta && formulario.get('nome')?.invalid">
+            *ngIf="exibirMsgCampoObrigatorio && formulario.get('nome')?.invalid">
             *Campo de preenchimento obrigatório
           </div>
         </div>
@@ -23,7 +23,7 @@
           <input type="text" autocomplete="current-password" formControlName="sobrenome"
             class="mt-2 mb-2 form-control form-control" />
           <div class="field-message m-0 mb-3 mensagem-erro"
-            *ngIf="solicitouProposta && formulario.get('sobrenome')?.invalid">
+            *ngIf="exibirMsgCampoObrigatorio && formulario.get('sobrenome')?.invalid">
             *Campo de preenchimento obrigatório
           </div>
         </div>
@@ -32,7 +32,7 @@
           <label>CPF</label>
           <input type="text" formControlName="cpf" placeholder="000.000.000-00" mask="000.000.000-00"
             class="mt-2 mb-2 form-control form-control" />
-          <div class="field-message m-0 mb-3 mensagem-erro" *ngIf="solicitouProposta && formulario.get('cpf')?.invalid">
+          <div class="field-message m-0 mb-3 mensagem-erro" *ngIf="exibirMsgCampoObrigatorio && formulario.get('cpf')?.invalid">
             *Campo de preenchimento obrigatório
           </div>
         </div>
@@ -49,7 +49,7 @@
            type="text" class="mt-2 mb-2 form-control form-control" formControlName="salario" />
 
           <div class="field-message m-0 mb-3 mensagem-erro"
-            *ngIf="solicitouProposta && formulario.get('salario')?.value == 0">
+            *ngIf="exibirMsgCampoObrigatorio && formulario.get('salario')?.value == 0">
             *Campo de preenchimento obrigatório
           </div>
 
@@ -66,7 +66,7 @@
           </select>
 
           <div class="field-message m-0 mb-2 mensagem-erro"
-            *ngIf="solicitouProposta && formulario.get('valorSolicitado')?.value == 0">
+            *ngIf="exibirMsgCampoObrigatorio && formulario.get('valorSolicitado')?.value == 0">
             *Campo de preenchimento obrigatório
           </div>
 
@@ -77,7 +77,7 @@
           <input type="text" autocomplete="current-password" formControlName="email"
             class="mt-2 mb-2 form-control form-control" />
           <div class="field-message m-0 mb-3 mensagem-erro"
-            *ngIf="solicitouProposta && formulario.get('email')?.invalid">
+            *ngIf="exibirMsgCampoObrigatorio && formulario.get('email')?.invalid">
             *Campo de preenchimento obrigatório
           </div>
         </div>
@@ -137,7 +137,7 @@
             <td>
               {{proposta.prazoPagamento}} meses
             </td>
-            <td>Em análise</td>
+            <td>{{proposta.aprovado ? 'Aprovado': 'Reprovado'}}</td>
           </tr>
         </tbody>
       </table>

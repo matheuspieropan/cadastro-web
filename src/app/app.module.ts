@@ -10,7 +10,6 @@ import { NavComponent } from './nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
-import { WebSocketService } from './service/web-socket';
 
 @NgModule({
   declarations: [
@@ -32,7 +31,6 @@ import { WebSocketService } from './service/web-socket';
   ],
   providers: [
     provideNgxMask(),
-    WebSocketService
   ],
   bootstrap: [AppComponent]
 })
