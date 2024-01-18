@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Proposta } from './model/proposta';
 import { CadastroService } from './service/cadastro.service';
 import { WebSocketConnector } from './service/web-socket-connector';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private cadastroService: CadastroService,
+    private notificacao: ToastrService
   ) {
     new WebSocketConnector('http://localhost:8080/ws', '/propostas', this.onMessage.bind(this));
   }
@@ -53,7 +55,9 @@ export class AppComponent implements OnInit {
       next: () => {
         this.buscarPropostas()
         this.limparFormulario();
+        this.notificacao.success('Propostada cadastrada com sucesso!')
       }, error: (error) => {
+        this.notificacao.error(error.error)
       }
     })
   }

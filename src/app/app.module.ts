@@ -10,6 +10,7 @@ import { NavComponent } from './nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,12 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
     NgxMaskPipe,
     NgxMaskDirective,
     HttpClientModule,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    ToastrModule.forRoot({
+      timeOut: 6000,
+      closeButton: true,
+      progressBar: true
+    }),
   ],
   providers: [
     provideNgxMask(),
