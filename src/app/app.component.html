@@ -137,7 +137,7 @@
             <td>
               {{proposta.prazoPagamento}} meses
             </td>
-            <td>{{proposta.aprovado ? 'Aprovado': 'Reprovado'}}</td>
+            <td>{{proposta.aprovado == null ? 'Em análise': proposta.aprovado ? 'Aprovado': 'Reprovado'}}</td>
           </tr>
         </tbody>
       </table>
