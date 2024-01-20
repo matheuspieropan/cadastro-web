@@ -41,6 +41,8 @@ export class AppComponent implements OnInit {
     this.cadastroService.obterPropostas().subscribe({
       next: propostas => {
         this.propostas = propostas
+      }, error: () => {
+        this.notificacao.error('Erro ao carregar propostas')
       }
     })
   }
@@ -75,7 +77,9 @@ export class AppComponent implements OnInit {
     this.exibirMsgCampoObrigatorio = false
   }
 
-  onMessage(propostas: any): void {
-    this.propostas = JSON.parse(propostas.body) as Proposta[]
+  onMessage(propostaAtualizada: any): void {
+    var proposta = JSON.parse(propostaAtualizada.body) as Proposta
+    const index = this.propostas.findIndex(p => p.id === proposta.id);
+    this.propostas[index] = proposta;
   }
 }

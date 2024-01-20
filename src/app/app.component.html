@@ -57,13 +57,9 @@
 
         <div class="col-lg-4">
           <label>Valor</label><br>
-          <select class="form-select mt-2 mb-3" formControlName="valorSolicitado">
-            <option value="0">Selecione..</option>
-            <option value="R$ 20.000,00 até R$ 40.999,00">R$ 20.000,00 até R$ 40.999,00</option>
-            <option value="R$ 41.000,00 até R$ 75.999,00">R$ 41.000,00 até R$ 75.999,00</option>
-            <option value="R$ 76.000,00 até R$ 99.999,00">R$ 76.000,00 até R$ 99.999,00</option>
-            <option value="R$ 100.000,00 ou mais">R$ 100.000,00 ou mais</option>
-          </select>
+          
+          <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align:'left'}"
+           type="text" class="mt-2 mb-2 form-control form-control" formControlName="valorSolicitado" />
 
           <div class="field-message m-0 mb-2 mensagem-erro"
             *ngIf="exibirMsgCampoObrigatorio && formulario.get('valorSolicitado')?.value == 0">
@@ -132,12 +128,12 @@
               <p class="fw-normal mb-1">{{ proposta.cpf| mask: '000.000.000-00' }}</p>
             </td>
             <td>
-              {{proposta.valorSolicitado}}
+              {{proposta.valorSolicitadoFmt}}
             </td>
             <td>
               {{proposta.prazoPagamento}} meses
             </td>
-            <td>{{proposta.aprovado ? 'Aprovado': 'Reprovado'}}</td>
+            <td>{{proposta.aprovado == null ? 'Em análise': proposta.aprovado ? 'Aprovado': 'Reprovado'}}</td>
           </tr>
         </tbody>
       </table>
