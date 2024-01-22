@@ -29,12 +29,12 @@ export class AppComponent implements OnInit {
 
   formulario: FormGroup = this.formBuilder.group({
     nome: ['', [Validators.required, Validators.minLength(3)]],
-    email: ['', [Validators.required, Validators.minLength(3)]],
     sobrenome: ['', [Validators.required, Validators.minLength(3)]],
-    cpf: ['', [Validators.required, Validators.minLength(11)]],
-    prazoPagamento: [24],
+    email: ['', [Validators.required, Validators.minLength(3)]],
     salario: [0, [Validators.required, Validators.minLength(1)]],
+    cpf: ['', [Validators.required, Validators.minLength(11)]],
     valorSolicitado: [0, [Validators.required, Validators.minLength(1)]],
+    prazoPagamento: [24],
   })
 
   buscarPropostas(): void {
