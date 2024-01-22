@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
     nome: ['', [Validators.required, Validators.minLength(3)]],
     sobrenome: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.minLength(3)]],
-    salario: [0, [Validators.required, Validators.minLength(1)]],
+    renda: [0, [Validators.required, Validators.minLength(1)]],
     cpf: ['', [Validators.required, Validators.minLength(11)]],
     valorSolicitado: [0, [Validators.required, Validators.minLength(1)]],
     prazoPagamento: [24],
@@ -71,7 +71,7 @@ export class AppComponent implements OnInit {
       sobrenome: '',
       cpf: '',
       prazoPagamento: 24,
-      salario: 0,
+      renda: 0,
       valorSolicitado: null,
     })
     this.exibirMsgCampoObrigatorio = false

@@ -46,10 +46,10 @@
           <label>Salário</label>
           
           <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align:'left'}"
-           type="text" class="mt-2 mb-2 form-control form-control" formControlName="salario" />
+           type="text" class="mt-2 mb-2 form-control form-control" formControlName="renda" />
 
           <div class="field-message m-0 mb-3 mensagem-erro"
-            *ngIf="exibirMsgCampoObrigatorio && formulario.get('salario')?.value == 0">
+            *ngIf="exibirMsgCampoObrigatorio && formulario.get('renda')?.value == 0">
             *Campo de preenchimento obrigatório
           </div>
 

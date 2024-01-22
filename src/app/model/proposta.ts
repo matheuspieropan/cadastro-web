@@ -4,7 +4,7 @@ export class Proposta {
     sobrenome: string = ''
     email: string = ''
     cpf: string = ''
-    salario: number = 0
+    renda: number = 0
     valorSolicitado: number = 0
     valorSolicitadoFmt: string = ''
     prazoPagamento: number = 0
