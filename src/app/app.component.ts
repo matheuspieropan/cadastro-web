@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
       next: () => {
         this.buscarPropostas()
         this.limparFormulario();
-        this.notificacao.success('Propostada cadastrada com sucesso!')
+        this.notificacao.success('Proposta cadastrada com sucesso!')
       }, error: (error) => {
         this.notificacao.error(error.error)
       }

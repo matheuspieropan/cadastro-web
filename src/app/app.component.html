@@ -101,7 +101,7 @@
 
   </form>
 
-  <div class="row mt-4">
+  <div class="row mt-4" *ngIf="propostas.length != 0">
     <div class="table-responsive">
       <table class="table table align-middle borda">
         <thead class="bg-light">
@@ -160,7 +160,7 @@
         {{observacao}}
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-secondary meu-azul" data-bs-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>
