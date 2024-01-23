@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AppComponent implements OnInit {
 
+  observacao: string = ''
   exibirMsgCampoObrigatorio: boolean = false
   value = 24;
   propostas: Proposta[] = []
@@ -81,5 +82,9 @@ export class AppComponent implements OnInit {
     var proposta = JSON.parse(propostaAtualizada.body) as Proposta
     const index = this.propostas.findIndex(p => p.id === proposta.id);
     this.propostas[index] = proposta;
+  }
+
+  setObservacao(observacao: string): void {
+    this.observacao = observacao;
   }
 }

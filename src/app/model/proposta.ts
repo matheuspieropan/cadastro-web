@@ -9,4 +9,5 @@ export class Proposta {
     valorSolicitadoFmt: string = ''
     prazoPagamento: number = 0
     aprovado: boolean = false
+    observacao: string = ''
 }

@@ -101,7 +101,7 @@
 
   </form>
 
-  <div class="row mt-4" *ngIf="propostas.length != 0">
+  <div class="row mt-4">
     <div class="table-responsive">
       <table class="table table align-middle borda">
         <thead class="bg-light">
@@ -111,6 +111,7 @@
             <th>Valor</th>
             <th>Prazo</th>
             <th>Status</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -133,10 +134,34 @@
             <td>
               {{proposta.prazoPagamento}} meses
             </td>
-            <td>{{proposta.aprovado == null ? 'Em análise': proposta.aprovado ? 'Aprovado': 'Reprovado'}}</td>
+            <td>
+              {{proposta.aprovado == null ? 'Em análise': proposta.aprovado ? 'Aprovado': 'Reprovado'}}
+            </td>
+            <td>
+              <button (click)="setObservacao(proposta.observacao)"*ngIf="proposta.aprovado == false" type="button" class="btn btn-secondary meu-azul" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Observação
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg meu-azul text-white">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Observação</h1>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{observacao}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
     </div>
   </div>
 </div>
