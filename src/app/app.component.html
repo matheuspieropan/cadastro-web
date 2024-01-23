@@ -69,11 +69,11 @@
         </div>
 
         <div class="col-lg-4">
-          <label>E-mail</label>
-          <input type="text" autocomplete="current-password" formControlName="email"
+          <label>Telefone</label>
+          <input type="text" autocomplete="current-password" formControlName="telefone" mask="+00 (00) 00000-0000" placeholder="+55 (32) 99999-9999"
             class="mt-2 mb-2 form-control form-control" />
           <div class="field-message m-0 mb-3 mensagem-erro"
-            *ngIf="exibirMsgCampoObrigatorio && formulario.get('email')?.invalid">
+            *ngIf="exibirMsgCampoObrigatorio && formulario.get('telefone')?.invalid">
             *Campo de preenchimento obrigatório
           </div>
         </div>
@@ -121,7 +121,7 @@
                 <img src="../assets/user.png" style="width: 64px; height: 64px" class="rounded-circle" />
                 <div class="ms-3">
                   <p class="fw-normal mb-1">{{proposta.nome}} {{proposta.sobrenome}}</p>
-                  <p class="text-normal mb-0">{{proposta.email}}</p>
+                  <p class="text-normal mb-0">{{proposta.telefone | mask: '+00 (00) 00000-0000'}}</p>
                 </div>
               </div>
             </td>
