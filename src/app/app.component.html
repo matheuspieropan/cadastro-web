@@ -43,7 +43,7 @@
 
         <div class="col-lg-4">
 
-          <label>Salário</label>
+          <label>Renda</label>
           
           <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align:'left'}"
            type="text" class="mt-2 mb-2 form-control form-control" formControlName="renda" />
@@ -70,7 +70,7 @@
 
         <div class="col-lg-4">
           <label>Telefone</label>
-          <input type="text" autocomplete="current-password" formControlName="telefone" mask="+00 (00) 00000-0000" placeholder="+55 (32) 99999-9999"
+          <input type="text" autocomplete="current-password" formControlName="telefone" mask="+00 (00) 00000-0000" placeholder="+55 (99) 99999-9999"
             class="mt-2 mb-2 form-control form-control" />
           <div class="field-message m-0 mb-3 mensagem-erro"
             *ngIf="exibirMsgCampoObrigatorio && formulario.get('telefone')?.invalid">
@@ -135,10 +135,10 @@
               {{proposta.prazoPagamento}} meses
             </td>
             <td>
-              {{proposta.aprovado == null ? 'Em análise': proposta.aprovado ? 'Aprovado': 'Reprovado'}}
+              {{proposta.aprovada == null ? 'Em análise': proposta.aprovada ? 'Aprovada': 'Reprovada'}}
             </td>
             <td>
-              <button (click)="setObservacao(proposta.observacao)"*ngIf="proposta.aprovado == false" type="button" class="btn btn-secondary meu-azul" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <button (click)="setObservacao(proposta.observacao)"*ngIf="proposta.aprovada == false" type="button" class="btn btn-secondary meu-azul" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Observação
               </button>
             </td>
