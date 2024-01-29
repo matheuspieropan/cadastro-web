@@ -1,5 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.css';
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600&display=swap');
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+@import 'bootstrap/dist/css/bootstrap.css';
 
 body {
     font-family: 'Nunito Sans';

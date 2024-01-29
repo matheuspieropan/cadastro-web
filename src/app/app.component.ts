@@ -32,9 +32,9 @@ export class AppComponent implements OnInit {
     nome: ['', [Validators.required, Validators.minLength(3)]],
     sobrenome: ['', [Validators.required, Validators.minLength(3)]],
     telefone: ['', [Validators.required, Validators.minLength(3)]],
-    renda: [0, [Validators.required, Validators.minLength(1)]],
+    renda: [null, [Validators.required, Validators.minLength(1)]],
     cpf: ['', [Validators.required, Validators.minLength(11)]],
-    valorSolicitado: [0, [Validators.required, Validators.minLength(1)]],
+    valorSolicitado: [null, [Validators.required, Validators.minLength(1)]],
     prazoPagamento: [24],
   })
 

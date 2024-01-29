@@ -1,143 +1,50 @@
 <app-nav></app-nav>
-
 <div class="container mt-3">
-
-  <div class="p-4">
-    <form>
-      <div class="form-icon">
-        <span><i class="icon icon-user"></i></span>
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control item" placeholder="Nome" formControlName="nome">
-      </div>
-      <div class="form-group">
-        <input type="password" class="form-control item" placeholder="Sobrenome" formControlName="sobrenome">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control item" placeholder="000.000.000-00" formControlName="cpf" >
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control item" placeholder="+55 (99) 99999-9999" formControlName="telefone">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control item" placeholder="Renda" formControlName="cpf">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control item" placeholder="Valor solicitado" formControlName="valor">
-      </div>
-      <div class="form-group">
-        <label>Prazo (em meses)</label><br>
-        <mat-slider class="example-margin mt-2 w-75" min="24" max="300" step="12">
-          <input matSliderThumb #slider formControlName="prazoPagamento">
-        </mat-slider>
-        {{slider.value}}
-      </div>
-      <div class="form-group">
-        <button type="button" class="btn btn-block create-account meu-azul">Enviar para análise</button>
-      </div>
-    </form>
-  </div>
 
   <div class="row">
 
-    <form [formGroup]="formulario">
-
-      <div class="row m-1">
-
-        <div class="col-lg-4">
-          <label>Nome</label>
-          <input type="text" autocomplete="current-password" formControlName="nome"
-            class="mt-2 mb-2 form-control form-control" />
-          <div class="field-message m-0 mb-3 mensagem-erro"
-            *ngIf="exibirMsgCampoObrigatorio && formulario.get('nome')?.invalid">
-            *Campo de preenchimento obrigatório
-          </div>
+    <div class="p-4">
+      <form [formGroup]="formulario">
+        <div class="form-icon">
+          <span><i class="bi bi-person"></i></span>
         </div>
-
-        <div class="col-lg-4">
-          <label>Sobrenome</label>
-          <input type="text" autocomplete="current-password" formControlName="sobrenome"
-            class="mt-2 mb-2 form-control form-control" />
-          <div class="field-message m-0 mb-3 mensagem-erro"
-            *ngIf="exibirMsgCampoObrigatorio && formulario.get('sobrenome')?.invalid">
-            *Campo de preenchimento obrigatório
-          </div>
+        <div class="form-group">
+          <input type="text" class="form-control item" placeholder="Nome" formControlName="nome">
         </div>
-
-        <div class="col-lg-4">
-          <label>CPF</label>
-          <input type="text" formControlName="cpf" placeholder="000.000.000-00" mask="000.000.000-00"
-            class="mt-2 mb-2 form-control form-control" />
-          <div class="field-message m-0 mb-3 mensagem-erro"
-            *ngIf="exibirMsgCampoObrigatorio && formulario.get('cpf')?.invalid">
-            *Campo de preenchimento obrigatório
-          </div>
+        <div class="form-group">
+          <input type="text" class="form-control item" placeholder="Sobrenome" formControlName="sobrenome">
         </div>
-
-      </div>
-
-      <div class="row m-1">
-
-        <div class="col-lg-4">
-
-          <label>Renda</label>
-
-          <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align:'left'}" type="text"
-            class="mt-2 mb-2 form-control form-control" formControlName="renda" />
-
-          <div class="field-message m-0 mb-3 mensagem-erro"
-            *ngIf="exibirMsgCampoObrigatorio && formulario.get('renda')?.value == 0">
-            *Campo de preenchimento obrigatório
-          </div>
-
+        <div class="form-group">
+          <input type="text" class="form-control item" placeholder="CPF" formControlName="cpf" mask="000.000.000-00">
         </div>
-
-        <div class="col-lg-4">
-          <label>Valor</label><br>
-
-          <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align:'left'}" type="text"
-            class="mt-2 mb-2 form-control form-control" formControlName="valorSolicitado" />
-
-          <div class="field-message m-0 mb-2 mensagem-erro"
-            *ngIf="exibirMsgCampoObrigatorio && formulario.get('valorSolicitado')?.value == 0">
-            *Campo de preenchimento obrigatório
-          </div>
-
+        <div class="form-group">
+          <input type="text" class="form-control item" placeholder="Telefone" formControlName="telefone"
+            mask="+00 (00) 00000-0000">
         </div>
-
-        <div class="col-lg-4">
-          <label>Telefone</label>
-          <input type="text" autocomplete="current-password" formControlName="telefone" mask="+00 (00) 00000-0000"
-            placeholder="+55 (99) 99999-9999" class="mt-2 mb-2 form-control form-control" />
-          <div class="field-message m-0 mb-3 mensagem-erro"
-            *ngIf="exibirMsgCampoObrigatorio && formulario.get('telefone')?.invalid">
-            *Campo de preenchimento obrigatório
-          </div>
+        <div class="form-group">
+          <input type="text" class="form-control item" placeholder="Renda" formControlName="renda" currencyMask
+            [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align:'left'}">
         </div>
-
-      </div>
-
-      <div class="row m-1 mb-2">
-
-        <div class="col-lg-4">
+        <div class="form-group">
+          <input type="text" class="form-control item" placeholder="Valor solicitado" formControlName="valorSolicitado"
+            currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align:'left'}">
+        </div>
+        <div class="form-group">
           <label>Prazo (em meses)</label><br>
-          <mat-slider class="example-margin mt-2" min="24" max="300" step="12" style="width: 80%;">
+          <mat-slider class="example-margin mt-2 w-75" min="24" max="300" step="12">
             <input matSliderThumb #slider formControlName="prazoPagamento">
           </mat-slider>
           {{slider.value}}
         </div>
-      </div>
-
-      <div class="row m-1 mb-2">
-        <div class="col-lg-12 text-end">
-          <button type="button" class="btn btn-secondary meu-azul" (click)="cadastrarProposta()">Enviar para
+        <div class="form-group">
+          <button (click)="cadastrarProposta()" class="btn btn-block create-account meu-azul">Enviar para
             análise</button>
         </div>
-      </div>
-
-    </form>
+      </form>
+    </div>
 
   </div>
+
 
   <div class="row p-4">
     <div class="table-title p-2">
