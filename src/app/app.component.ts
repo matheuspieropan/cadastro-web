@@ -11,9 +11,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AppComponent implements OnInit {
 
+  exibirTelaCadastro = false
   observacao: string = ''
   exibirMsgCampoObrigatorio: boolean = false
-  value = 24;
   propostas: Proposta[] = []
 
   constructor(
