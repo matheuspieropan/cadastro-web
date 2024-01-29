@@ -2,9 +2,9 @@
 
 <div class="container mt-3">
 
-  <form [formGroup]="formulario">
+  <div class="row">
 
-    <div class="borda">
+    <form [formGroup]="formulario">
 
       <div class="row m-1">
 
@@ -32,7 +32,8 @@
           <label>CPF</label>
           <input type="text" formControlName="cpf" placeholder="000.000.000-00" mask="000.000.000-00"
             class="mt-2 mb-2 form-control form-control" />
-          <div class="field-message m-0 mb-3 mensagem-erro" *ngIf="exibirMsgCampoObrigatorio && formulario.get('cpf')?.invalid">
+          <div class="field-message m-0 mb-3 mensagem-erro"
+            *ngIf="exibirMsgCampoObrigatorio && formulario.get('cpf')?.invalid">
             *Campo de preenchimento obrigatório
           </div>
         </div>
@@ -44,9 +45,9 @@
         <div class="col-lg-4">
 
           <label>Renda</label>
-          
-          <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align:'left'}"
-           type="text" class="mt-2 mb-2 form-control form-control" formControlName="renda" />
+
+          <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align:'left'}" type="text"
+            class="mt-2 mb-2 form-control form-control" formControlName="renda" />
 
           <div class="field-message m-0 mb-3 mensagem-erro"
             *ngIf="exibirMsgCampoObrigatorio && formulario.get('renda')?.value == 0">
@@ -57,9 +58,9 @@
 
         <div class="col-lg-4">
           <label>Valor</label><br>
-          
-          <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align:'left'}"
-           type="text" class="mt-2 mb-2 form-control form-control" formControlName="valorSolicitado" />
+
+          <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align:'left'}" type="text"
+            class="mt-2 mb-2 form-control form-control" formControlName="valorSolicitado" />
 
           <div class="field-message m-0 mb-2 mensagem-erro"
             *ngIf="exibirMsgCampoObrigatorio && formulario.get('valorSolicitado')?.value == 0">
@@ -70,8 +71,8 @@
 
         <div class="col-lg-4">
           <label>Telefone</label>
-          <input type="text" autocomplete="current-password" formControlName="telefone" mask="+00 (00) 00000-0000" placeholder="+55 (99) 99999-9999"
-            class="mt-2 mb-2 form-control form-control" />
+          <input type="text" autocomplete="current-password" formControlName="telefone" mask="+00 (00) 00000-0000"
+            placeholder="+55 (99) 99999-9999" class="mt-2 mb-2 form-control form-control" />
           <div class="field-message m-0 mb-3 mensagem-erro"
             *ngIf="exibirMsgCampoObrigatorio && formulario.get('telefone')?.invalid">
             *Campo de preenchimento obrigatório
@@ -97,33 +98,34 @@
             análise</button>
         </div>
       </div>
+
+    </form>
+
+  </div>
+
+  <div class="row p-4">
+    <div class="table-title p-2">
+      <h4>Resultado</h4>
     </div>
 
-  </form>
-
-  <div class="row mt-4" *ngIf="propostas.length != 0">
     <div class="table-responsive">
-      <table class="table table align-middle borda">
-        <thead class="bg-light">
+      <table class="table table-striped table-hover borda">
+        <thead>
           <tr>
             <th>Nome</th>
+            <th>Telefone</th>
             <th>CPF</th>
             <th>Valor</th>
             <th>Prazo</th>
             <th>Status</th>
-            <th></th>
+            <th>Observação</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let proposta of propostas">
+            <td>{{proposta.nome}} {{proposta.sobrenome}}</td>
             <td>
-              <div class="d-flex align-items-center">
-                <img src="../assets/user.png" style="width: 64px; height: 64px" class="rounded-circle" />
-                <div class="ms-3">
-                  <p class="fw-normal mb-1">{{proposta.nome}} {{proposta.sobrenome}}</p>
-                  <p class="text-normal mb-0">{{proposta.telefone | mask: '+00 (00) 00000-0000'}}</p>
-                </div>
-              </div>
+              <p class="text-normal mb-0">{{proposta.telefone | mask: '+00 (00) 00000-0000'}}</p>
             </td>
             <td>
               <p class="fw-normal mb-1">{{ proposta.cpf| mask: '000.000.000-00' }}</p>
@@ -138,7 +140,8 @@
               {{proposta.aprovada == null ? 'Em análise': proposta.aprovada ? 'Aprovada': 'Reprovada'}}
             </td>
             <td>
-              <button (click)="setObservacao(proposta.observacao)"*ngIf="proposta.aprovada == false" type="button" class="btn btn-secondary meu-azul" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <button (click)="setObservacao(proposta.observacao)" *ngIf="proposta.aprovada == false" type="button"
+                class="btn btn-secondary meu-azul" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Observação
               </button>
             </td>
@@ -146,15 +149,16 @@
         </tbody>
       </table>
     </div>
+
   </div>
 </div>
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg meu-azul text-white">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Observação</h1>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         {{observacao}}
