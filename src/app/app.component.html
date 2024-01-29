@@ -2,6 +2,42 @@
 
 <div class="container mt-3">
 
+  <div class="p-4">
+    <form>
+      <div class="form-icon">
+        <span><i class="icon icon-user"></i></span>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control item" placeholder="Nome" formControlName="nome">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control item" placeholder="Sobrenome" formControlName="sobrenome">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control item" placeholder="000.000.000-00" formControlName="cpf" >
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control item" placeholder="+55 (99) 99999-9999" formControlName="telefone">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control item" placeholder="Renda" formControlName="cpf">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control item" placeholder="Valor solicitado" formControlName="valor">
+      </div>
+      <div class="form-group">
+        <label>Prazo (em meses)</label><br>
+        <mat-slider class="example-margin mt-2 w-75" min="24" max="300" step="12">
+          <input matSliderThumb #slider formControlName="prazoPagamento">
+        </mat-slider>
+        {{slider.value}}
+      </div>
+      <div class="form-group">
+        <button type="button" class="btn btn-block create-account meu-azul">Enviar para análise</button>
+      </div>
+    </form>
+  </div>
+
   <div class="row">
 
     <form [formGroup]="formulario">
