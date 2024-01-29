@@ -61,20 +61,16 @@
         <thead>
           <tr>
             <th>Nome</th>
-            <th>Telefone</th>
             <th>CPF</th>
             <th>Valor</th>
             <th>Prazo</th>
             <th>Status</th>
-            <th>Observação</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let proposta of propostas">
             <td>{{proposta.nome}} {{proposta.sobrenome}}</td>
-            <td>
-              <p class="text-normal mb-0">{{proposta.telefone | mask: '+00 (00) 00000-0000'}}</p>
-            </td>
             <td>
               <p class="fw-normal mb-1">{{ proposta.cpf| mask: '000.000.000-00' }}</p>
             </td>
